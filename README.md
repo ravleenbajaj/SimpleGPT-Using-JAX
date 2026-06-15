@@ -102,6 +102,18 @@ def train_step(state, x, y, dropout_rng):
 | `learning_rate` | 3e-4 | Peak LR (cosine decay) |
 | `dropout` | 0.1 | Dropout probability |
 
+## Results
+
+Trained on Tiny Shakespeare (~1M characters, 65-char vocab, 825K parameters):
+
+| Step | Train loss | Val loss |
+|------|-----------|----------|
+| 1    | 4.96      | 4.98     |
+| 1000 | 2.78      | 2.79     |
+| 3000 | 2.63      | 2.68     |
+
+Train and val loss track closely throughout, indicating no significant overfitting.
+Generated sample after 3000 steps (temperature=0.8):
 ---
 
 ## References
