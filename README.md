@@ -113,7 +113,7 @@ Trained on Tiny Shakespeare (~1M characters, 65-char vocab, 825K parameters):
 | 3000 | 2.63      | 2.68     |
 
 Train and val loss track closely throughout, indicating no significant overfitting.
-Generated sample after 3000 steps (temperature=0.8):
+<!--Generated sample after 3000 steps (temperature=0.8): -->
 ---
 
 ## References
