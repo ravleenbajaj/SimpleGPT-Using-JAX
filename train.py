@@ -249,8 +249,16 @@ def train(
 if __name__ == "__main__":
     import sys
     path = sys.argv[1] if len(sys.argv) > 1 else "data/input.txt"
-    state, tokenizer, config = train(path)
-
+    state, tokenizer, config = train(
+        path,
+        n_layer=8,
+        n_head=8,
+        n_embd=256,
+        block_size=256,
+        batch_size=64,
+        max_iters=10000,
+        dropout=0.1,
+    )
     print("\n--- Sample generation (temperature=0.8) ---\n")
     sample = generate(
         state, config, tokenizer,
@@ -260,3 +268,8 @@ if __name__ == "__main__":
         rng=jax.random.PRNGKey(1),
     )
     print(sample)
+
+    import pickle
+    with open("weights.pkl", "wb") as f:
+        pickle.dump({"params": state.params, "config": vars(config), "vocab": {"stoi": tokenizer.stoi, "itos": tokenizer.itos}}, f)
+    print("Weights saved to weights.pkl")
